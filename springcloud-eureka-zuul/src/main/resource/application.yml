@@ -1,0 +1,21 @@
+server:
+  port: 80 # 端口自己决定
+
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8700/eureka/ #当前zuul网关想要注册到哪个注册中心
+
+#指定应用名称
+spring:
+  application:
+    name: zuul
+
+zuul:
+  routes:
+    route1:
+          path: /provider/**
+          serviceId: eureka-provider01
+    route2:
+      path: /consumer/**
+      serviceId: eureka-consumer
